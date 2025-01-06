@@ -2,9 +2,10 @@ package main
 
 import (
 	"fmt"
-	"database/sql"
-	
-	_ "github.com/lib/pq"
+	_ "database/sql"
+
+	_ "github.com/lib/pq"  // the _ tells go we need this package even though we never rf it
+						   // this is the database driver
 )
 
 const (
@@ -15,5 +16,6 @@ const (
 )
 
 func main() {
-	fmt.Println("hello")
+	psqlInfo := fmt.Sprintf("host=%s port=%d user=%s dbname=%s", host, port, user, dbname)
+	fmt.Println(psqlInfo)
 }
